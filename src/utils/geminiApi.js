@@ -121,5 +121,10 @@ export async function validateApiKey(apiKey) {
       generationConfig: { maxOutputTokens: 10 }
     })
   });
-  return response.ok;
+  if (!response.ok) {
+    const error = await response.json().catch(() => ({}));
+    const message = error?.error?.message || `API 오류 (${response.status})`;
+    throw new Error(message);
+  }
+  return true;
 }

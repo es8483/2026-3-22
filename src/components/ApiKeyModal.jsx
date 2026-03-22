@@ -13,14 +13,10 @@ export default function ApiKeyModal({ onApiKeySet }) {
     setLoading(true);
     setError('');
     try {
-      const valid = await validateApiKey(key.trim());
-      if (valid) {
-        onApiKeySet(key.trim());
-      } else {
-        setError('유효하지 않은 API 키입니다. Google AI Studio에서 발급받은 키를 확인해주세요.');
-      }
-    } catch {
-      setError('API 키 확인 중 오류가 발생했습니다. 인터넷 연결을 확인해주세요.');
+      await validateApiKey(key.trim());
+      onApiKeySet(key.trim());
+    } catch (err) {
+      setError(err.message || 'API 키 확인 중 오류가 발생했습니다. 인터넷 연결을 확인해주세요.');
     } finally {
       setLoading(false);
     }
