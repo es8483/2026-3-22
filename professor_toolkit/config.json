@@ -1,0 +1,24 @@
+{
+  "course": {
+    "name": "Untitled Course",
+    "code": "CS101",
+    "semester": "Spring 2026",
+    "instructor": "Professor"
+  },
+  "grading": {
+    "scale": {
+      "A": 90,
+      "B": 80,
+      "C": 70,
+      "D": 60,
+      "F": 0
+    },
+    "weights": {
+      "assignments": 0.30,
+      "midterm": 0.30,
+      "final": 0.40
+    }
+  },
+  "output_dir": "output",
+  "students_file": "students.csv"
+}
